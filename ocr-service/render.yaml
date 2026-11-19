@@ -1,0 +1,32 @@
+# Blueprint для Render (необязательно: сервис можно создать и вручную через веб-интерфейс).
+services:
+  - type: web
+    name: ocr-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: false   # деплой запускает GitHub Actions, чтобы не было двойных сборок
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: SENTRY_DSN
+        sync: false
+      - key: LOGTAIL_SOURCE_TOKEN
+        sync: false
+      - key: LOGTAIL_ENDPOINT
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: ADMIN_TOKEN
+        generateValue: true

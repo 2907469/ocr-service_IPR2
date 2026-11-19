@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OCR service — метрики</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+    main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    .sub { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .card { background: #1e293b; border-radius: 12px; padding: 14px 16px; }
+    .card h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin: 0 0 8px; }
+    .val { font-size: 26px; font-weight: 700; }
+    .small { font-size: 13px; color: #cbd5e1; margin-top: 4px; }
+    .ok { color: #4ade80; } .bad { color: #f87171; }
+    .bar { height: 8px; background: #334155; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+    .bar > div { height: 100%; background: #38bdf8; width: 0; transition: width .4s; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>OCR service — дашборд метрик</h1>
+  <div class="sub">Обновляется каждые 5 секунд · <span id="updated">—</span></div>
+  <div class="grid">
+    <div class="card"><h2>Статус</h2><div class="val" id="status">…</div><div class="small" id="db"></div></div>
+    <div class="card"><h2>Uptime</h2><div class="val" id="uptime">—</div><div class="small" id="started"></div></div>
+    <div class="card"><h2>Память процесса (RSS)</h2><div class="val" id="rss">—</div><div class="small" id="heap"></div></div>
+    <div class="card"><h2>Память системы</h2><div class="val" id="sysmem">—</div><div class="bar"><div id="sysbar"></div></div></div>
+    <div class="card"><h2>Нагрузка CPU (loadavg)</h2><div class="val" id="load">—</div><div class="small" id="cores"></div></div>
+    <div class="card"><h2>Запросы</h2><div class="val" id="req">—</div><div class="small" id="codes"></div></div>
+    <div class="card"><h2>OCR-распознавания</h2><div class="val" id="ocr">—</div><div class="small" id="ocrd"></div></div>
+    <div class="card"><h2>Сохранено в БД</h2><div class="val" id="stored">—</div><div class="small" id="node"></div></div>
+  </div>
+</main>
+<script src="/static/dashboard.js"></script>
+</body>
+</html>
